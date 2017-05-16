@@ -1181,6 +1181,23 @@
     }
   };
 
+/*
+ * Added by Stewart 15 May 17
+ * Checks if at least one of the fields listed in options is not empty
+ */
+    validate.validators.onePresent = function(value, options, key, attributes) {
+        var testKeys = options.keys;
+        for(var i = 0; i < testKeys.length; i++)
+        {
+            if(attributes[testKeys[i]])
+            {
+                return null;
+            }
+        }
+        
+        return "cannot be empty";
+};
+
   validate.exposeModule(validate, this, exports, module, define);
 }).call(this,
         typeof exports !== 'undefined' ? /* istanbul ignore next */ exports : null,
